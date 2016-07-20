@@ -1,0 +1,73 @@
+{
+  "name": "ctags-support",
+  "displayName": "ctags-support",
+  "description": "stags support",
+  "version": "1.0.0",
+  "publisher": "jaydenlin",
+  "icon": "images/icon.png",
+  "engines": {
+    "vscode": "^1.0.0",
+    "node": "5.0.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.findCTags"
+  ],
+  "main": "./out/src/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.findCTags",
+        "title": "Ctags Support: navigate to defination"
+      },
+      {
+        "command": "extension.showNavigationHistory",
+        "title": "Ctags Support: show navigation history"
+      },
+      {
+        "command": "extension.clearAllNavigationHistory",
+        "title": "Ctags Support: clear all navigation history"
+      },
+      {
+        "command": "extension.clearOneNavigationHistory",
+        "title": "Ctags Support: clear one navigation history"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.findCTags",
+        "key": "ctrl+t",
+        "mac": "cmd+t",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "extension.showNavigationHistory",
+        "key": "ctrl+shift+t",
+        "mac": "cmd+shift+t",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaydenlin/ctags-support"
+  },
+  "galleryBanner": {
+    "color": "#1e415e",
+    "theme": "dark"
+  },
+  "scripts": {
+    "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+    "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "typescript": "^1.8.5",
+    "vscode": "^0.11.0"
+  },
+  "dependencies": {
+    "ctags": "^3.0.0"
+  }
+}
