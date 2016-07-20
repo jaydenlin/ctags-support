@@ -1,7 +1,7 @@
 {
   "name": "ctags-support",
   "displayName": "ctags-support",
-  "description": "stags support",
+  "description": "ctags support",
   "version": "1.0.0",
   "publisher": "jaydenlin",
   "icon": "images/icon.png",
