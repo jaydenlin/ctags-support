@@ -1,4 +1,4 @@
-# [CTags Support](extension.clearOneNavigationHistory) 
+# [CTags Support](https://github.com/jaydenlin/ctags-support) 
 > An extension that provides `CTags Support` in [Visual Studio Code](https://code.visualstudio.com/)!
 ```
 ext install ctags-support
