@@ -1,8 +1,8 @@
 {
   "name": "ctags-support",
   "displayName": "ctags-support",
-  "description": "ctags support",
-  "version": "1.0.1",
+  "description": "ctags support with navigation to defination and navigation history recored",
+  "version": "1.0.2",
   "publisher": "jaydenlin",
   "icon": "images/icon.png",
   "engines": {

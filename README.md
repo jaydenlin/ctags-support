@@ -1,12 +1,12 @@
 # [CTags Support](extension.clearOneNavigationHistory) 
-> An Extension that provides `Ctags Support` in [Visual Studio Code](https://code.visualstudio.com/)!
+> An extension that provides `CTags Support` in [Visual Studio Code](https://code.visualstudio.com/)!
 ```
 ext install ctags-support
 ```
 
 ## Additional Setup
-You have to insatll [ctags](http://ctags.sourceforge.net/) and generate the .tags file before you use this extension.
-Run the ctags command under the your project folder.
+You have to insatll [CTags](http://ctags.sourceforge.net/) and generate the .tags file before you use this extension.
+Run the CTags command under the your project folder.
 ```
 ctags -R -f .tags
 ```
@@ -30,7 +30,7 @@ Press `f1` and input `Ctags Support: clear one navigation history`, then choose 
 ![IDE](http://i.giphy.com/l46CthKXDTO9DFQFW.gif) 
 
 ## Custom Keybinding
-You can also set custom shortcut in `keybindings.json` via `Code => Preferences => Keyboard Shortcuts`  
+You can also set custom shortcuts in `keybindings.json` via `Code => Preferences => Keyboard Shortcuts`  
 For example:  
 `Navigate to Defination`
 ```
