@@ -12,10 +12,17 @@ var navigationHistory = [];
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-
-    //restore previous history
+    
+    //restore previous history   
     restoreWorkspaceState(context,STATE_KEY,(val)=>{
-        navigationHistory = JSON.parse(val).navigationHistory;
+        try{
+            var savedState = JSON.parse(val);
+            if(savedState.navigationHistory){
+                navigationHistory = JSON.parse(val).navigationHistory;
+            }
+        }catch(e){
+            console.log(e);
+        }     
     });
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
@@ -163,7 +170,6 @@ function saveWorkspaceState(context : vscode.ExtensionContext, key: string,value
 }
 
 function restoreWorkspaceState(context : vscode.ExtensionContext, key: string,callback:Function): void {     
-    console.log(context.workspaceState.get(key,''));
     callback(context.workspaceState.get(key,''));
 }
 
