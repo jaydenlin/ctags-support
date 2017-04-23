@@ -5,7 +5,7 @@ ext install ctags-support
 ```
 
 ## Additional Setup
-You have to insatll [CTags](http://ctags.sourceforge.net/) and generate the .tags file before you use this extension.
+You have to install [CTags](http://ctags.sourceforge.net/) and generate the .tags file before you use this extension.
 Run the CTags command under the your project folder.
 ```
 ctags -R -f .tags
