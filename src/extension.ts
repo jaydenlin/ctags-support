@@ -1,7 +1,7 @@
 'use strict';
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import vscode = require('vscode');
 var path = require('path');
 var fileGrep = require('./grep');
 var fs = require('fs');

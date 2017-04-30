@@ -2,7 +2,7 @@
   "name": "ctags-support",
   "displayName": "CTags Support",
   "description": "CTags support with navigation to definition and navigation history recored",
-  "version": "1.0.13",
+  "version": "1.0.15",
   "publisher": "jaydenlin",
   "icon": "images/icon.png",
   "engines": {
@@ -61,12 +61,12 @@
     "theme": "dark"
   },
   "scripts": {
-    "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
-    "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
-    "postinstall": "node ./node_modules/vscode/bin/install"
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "build": "node ./node_modules/vscode/bin/compile -p ./",
+    "watch": "node ./node_modules/vscode/bin/compile -watch -p ./"
   },
   "devDependencies": {
-    "typescript": "^1.8.5",
+    "typescript": "^2.0.10",
     "vscode": "^0.11.0"
   },
   "dependencies": {
