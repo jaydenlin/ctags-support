@@ -1,7 +1,7 @@
 {
   "name": "ctags-support",
   "displayName": "CTags Support",
-  "description": "CTags support with navigation to defination and navigation history recored",
+  "description": "CTags support with navigation to definition and navigation history recored",
   "version": "1.0.8",
   "publisher": "jaydenlin",
   "icon": "images/icon.png",
@@ -23,7 +23,7 @@
     "commands": [
       {
         "command": "extension.findCTags",
-        "title": "Ctags Support: navigate to defination"
+        "title": "Ctags Support: navigate to definition"
       },
       {
         "command": "extension.showNavigationHistory",
