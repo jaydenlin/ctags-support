@@ -13,6 +13,7 @@ function find(stream, reg) {
         if (foundItems && foundItems.length > 0 && foundItems[0] !== '') {
           var item=foundItems[0];//Only use the first found
           e.emit('found', item, lineNumber);
+          console.log("lineNumber:" + lineNumber);
           found += 1;
     };
 

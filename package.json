@@ -2,7 +2,7 @@
   "name": "ctags-support",
   "displayName": "CTags Support",
   "description": "CTags support with navigation to defination and navigation history recored",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "publisher": "jaydenlin",
   "icon": "images/icon.png",
   "engines": {
@@ -71,6 +71,7 @@
     "vscode": "^0.11.0"
   },
   "dependencies": {
-    "ctags": "^3.0.0"
+    "line-by-line": "^0.1.5",
+    "n-readlines": "^0.2.7"
   }
 }
