@@ -2,7 +2,7 @@
   "name": "ctags-support",
   "displayName": "CTags Support",
   "description": "CTags support with navigation to definition and navigation history recored",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "publisher": "jaydenlin",
   "icon": "images/icon.png",
   "engines": {
@@ -12,7 +12,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.findCTags",
+    "onCommand:extension.searchCTags",
     "onCommand:extension.showNavigationHistory",
     "onCommand:extension.clearAllNavigationHistory",
     "onCommand:extension.clearOneNavigationHistory"
@@ -21,7 +21,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "extension.findCTags",
+        "command": "extension.searchCTags",
         "title": "Ctags Support: navigate to definition"
       },
       {
@@ -39,7 +39,7 @@
     ],
     "keybindings": [
       {
-        "command": "extension.findCTags",
+        "command": "extension.searchCTags",
         "key": "ctrl+t",
         "mac": "cmd+t",
         "when": "editorTextFocus"
