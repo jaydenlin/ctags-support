@@ -3,6 +3,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 var path = require('path');
+let LineByLine = require('n-readlines');
 var fileGrep = require('./grep');
 var fs = require('fs');
 var STATE_KEY = "ctagsSupport";
@@ -15,7 +16,7 @@ export function activate(context: vscode.ExtensionContext) {
     //restore previous history   
     restoreWorkspaceState(context,STATE_KEY,(val)=>{
         try{
-            var savedState = JSON.parse(val);
+            let savedState = JSON.parse(val);
             if(savedState.navigationHistory){
                 navigationHistory = JSON.parse(val).navigationHistory;
             }
@@ -29,7 +30,7 @@ export function activate(context: vscode.ExtensionContext) {
     
     // The commandId parameter must match the command field in package.json
     let disposableFindTags = vscode.commands.registerCommand('extension.searchCTags', () => {         
-         console.log("Read .tag file from:"+path.join(vscode.workspace.rootPath,'.tags'));
+         console.log("Read .tag file from:" + path.join(vscode.workspace.rootPath,'.tags'));
          let tags = loadTags(path.join(vscode.workspace.rootPath,'.tags'));
          searchTags(context, tags);
     });
@@ -67,11 +68,10 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 function loadTags(tagFilePath){
-    var tags=[];
-    var lineByLine = require('n-readlines');
-    var liner = new lineByLine(tagFilePath);
-    var line;
-    var lineNumber = 0;
+    let tags=[];  
+    let liner = new LineByLine(tagFilePath);
+    let line;
+    let lineNumber = 0;
     while (line = liner.next()) {
         let elements = line.toString('ascii').split("\t");
         let tagName, fileName;
@@ -100,26 +100,27 @@ function loadTags(tagFilePath){
     return tags;
 }
 
-function searchTags(context: vscode.ExtensionContext, tags:Array<Tags>) {
-    var editor = getEditor();
-    var query = getSelectedText(editor);
+function searchTags(context: vscode.ExtensionContext, tags: Array<Tags>) {
+    let editor = getEditor();
+    let query = getSelectedText(editor);
     
-    var displayFiles = tags.filter((tag, index) => {
+    let displayFiles = tags.filter((tag, index) => {
         return tag.label === query;
     });
             
     //Case 1. Only one tag found  
     if(displayFiles.length === 1){
         recordHistory(displayFiles[0]);
-        saveWorkspaceState(context,STATE_KEY,{navigationHistory:navigationHistory});        
+        saveWorkspaceState(context, STATE_KEY, { navigationHistory : navigationHistory });        
         navigateToDefinition(displayFiles[0].filePath,displayFiles[0].pattern);
     //Case 2. Many tags found
-    }else  if(displayFiles.length > 0){
-        vscode.window.showQuickPick(displayFiles).then(val=> {
+    }else if(displayFiles.length > 0){
+        vscode.window.showQuickPick(displayFiles).then(val => {
             recordHistory(val);
             saveWorkspaceState(context,STATE_KEY,{navigationHistory:navigationHistory});  
             navigateToDefinition(val.filePath,val.pattern);
-    });
+        }
+    );
     //Case 3. No tags found    
     }else{
         vscode.window.showInformationMessage('No related tags is founded for the "'+query+'"');
@@ -128,9 +129,9 @@ function searchTags(context: vscode.ExtensionContext, tags:Array<Tags>) {
 }
 
 function recordHistory(visistedFile:any) {
-    var isRecorded = false;
+    let isRecorded = false;
     if(navigationHistory.length < 20){
-        navigationHistory.map((val)=>{
+        navigationHistory.map(val => {
             //if the filePath was already in the Histroy, we will ignore it.
             if( val.filePath ===  visistedFile.filePath && val.pattern === visistedFile.pattern){
                 isRecorded = true;
@@ -145,16 +146,16 @@ function recordHistory(visistedFile:any) {
     }
 
     //save to the session
-    var savedState = {
+    let savedState = {
         navigationHistory:navigationHistory
     }
     
 }
 
 function navigateToDefinition(filePath:string,pattern:string) {
-    vscode.workspace.openTextDocument(filePath).then(d=> {
-        vscode.window.showTextDocument(d).then(textEditor=>{
-            fileGrep(fs.createReadStream(d.fileName),pattern)                     
+    vscode.workspace.openTextDocument(filePath).then( d => {
+        vscode.window.showTextDocument(d).then(textEditor => {
+            fileGrep(fs.createReadStream(d.fileName), pattern)                     
                 .on('found', function (term, lineNumber) {
                     goTolLine(lineNumber);                                
                 });                  
@@ -163,7 +164,7 @@ function navigateToDefinition(filePath:string,pattern:string) {
 }
 
 function getEditor(): vscode.TextEditor {
-    var editor = vscode.window.activeTextEditor;
+    let editor = vscode.window.activeTextEditor;
     if (!editor) {
         return;
     }
@@ -171,18 +172,18 @@ function getEditor(): vscode.TextEditor {
 }
 
 function getSelectedText(editor: vscode.TextEditor) {
-    var selection = editor.selection;
-    var text = editor.document.getText(selection).trim();
+    let selection = editor.selection;
+    let text = editor.document.getText(selection).trim();
     if (!text) {
-        var range = editor.document.getWordRangeAtPosition(selection.active);
+        let range = editor.document.getWordRangeAtPosition(selection.active);
         text = editor.document.getText(range);
     }
     return text;
 }
 
 function goTolLine(line: number) {
-    var line = line===0 ? line : line-1;
-    var newSelection = new vscode.Selection(line, 0, line, 0);
+    line = line===0 ? line : line-1;
+    let newSelection = new vscode.Selection(line, 0, line, 0);
     vscode.window.activeTextEditor.selection = newSelection;      
     vscode.window.activeTextEditor.revealRange(newSelection, vscode.TextEditorRevealType.InCenter);
 }
@@ -191,7 +192,7 @@ function saveWorkspaceState(context : vscode.ExtensionContext, key: string,value
     context.workspaceState.update(key, JSON.stringify(value));
 }
 
-function restoreWorkspaceState(context : vscode.ExtensionContext, key: string,callback:Function): void {     
+function restoreWorkspaceState(context : vscode.ExtensionContext, key: string, callback:Function): void {     
     callback(context.workspaceState.get(key,''));
 }
 
