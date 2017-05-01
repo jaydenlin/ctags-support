@@ -56,7 +56,6 @@ export function activate(context: vscode.ExtensionContext) {
                 return h.filePath!==val.filePath && h.pattern!==val.pattern;
                 
             });
-            //navigateToDefinition(val.filePath,val.pattern);
         });
   
     });
@@ -109,19 +108,19 @@ function searchTags(context: vscode.ExtensionContext, tags:Array<Tags>) {
         return tag.label === query;
     });
             
-    //Case 1. Only one tag founded  
+    //Case 1. Only one tag found  
     if(displayFiles.length === 1){
         recordHistory(displayFiles[0]);
         saveWorkspaceState(context,STATE_KEY,{navigationHistory:navigationHistory});        
         navigateToDefinition(displayFiles[0].filePath,displayFiles[0].pattern);
-    //Case 2. Many tags founded
+    //Case 2. Many tags found
     }else  if(displayFiles.length > 0){
         vscode.window.showQuickPick(displayFiles).then(val=> {
             recordHistory(val);
             saveWorkspaceState(context,STATE_KEY,{navigationHistory:navigationHistory});  
             navigateToDefinition(val.filePath,val.pattern);
     });
-    //Case 3. No tags founded    
+    //Case 3. No tags found    
     }else{
         vscode.window.showInformationMessage('No related tags is founded for the "'+query+'"');
     }
