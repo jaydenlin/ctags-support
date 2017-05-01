@@ -1,7 +1,7 @@
 'use strict';
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import vscode = require('vscode');
+import * as vscode from 'vscode';
 var path = require('path');
 var fileGrep = require('./grep');
 var fs = require('fs');
@@ -198,4 +198,12 @@ function restoreWorkspaceState(context : vscode.ExtensionContext, key: string,ca
 
 // this method is called when your extension is deactivated
 export function deactivate() {
+}
+
+interface Tags {
+    description: string, 
+    label: string, 
+    detail: string,
+    filePath: string,
+    pattern: string
 }
