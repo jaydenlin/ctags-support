@@ -87,13 +87,17 @@ function loadTags(tagFilePath){
             return true;
         });
         let remainingString = remainingElements.join("\t");
-        let pattern = remainingElements.join("\t").substring(remainingString.lastIndexOf("\/^")+1,remainingString.lastIndexOf("\/;\""));
+        // Strip starting (/^) and ending ($/;") characters from ctags pattern
+        let pattern = remainingElements.join("\t").substring(remainingString.lastIndexOf("\/^") + 2, remainingString.lastIndexOf("$\/;\""));
+        // Escape regex pattern and add ^ and $
+        // See: https://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript/3561711#3561711
+        let patternEscaped = "^" + pattern.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&') + "$";
         tags.push({
-            description: "", 
-            label: tagName, 
+            description: "",
+            label: tagName,
             detail: fileName,
             filePath: path.join(vscode.workspace.rootPath,fileName),
-            pattern: pattern
+            pattern: patternEscaped
         });
         lineNumber++;
     }
