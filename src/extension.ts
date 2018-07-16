@@ -127,7 +127,7 @@ function searchTags(context: vscode.ExtensionContext, tags: Array<Tags>) {
     );
     //Case 3. No tags found    
     }else{
-        vscode.window.showInformationMessage('No related tags is founded for the "'+query+'"');
+        vscode.window.showInformationMessage('No related tags are found for the "'+query+'"');
     }
   
 }
