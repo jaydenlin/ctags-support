@@ -119,7 +119,7 @@ function searchTags(context: vscode.ExtensionContext, tags: Array<Tags>) {
         navigateToDefinition(displayFiles[0].filePath,displayFiles[0].pattern);
     //Case 2. Many tags found
     }else if(displayFiles.length > 0){
-        vscode.window.showQuickPick(displayFiles).then(val => {
+        vscode.window.showQuickPick(displayFiles, {matchOnDescription: true, matchOnDetail: true}).then(val => {
             recordHistory(val);
             saveWorkspaceState(context,STATE_KEY,{navigationHistory:navigationHistory});  
             navigateToDefinition(val.filePath,val.pattern);
