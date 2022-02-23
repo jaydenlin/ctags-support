@@ -36,7 +36,7 @@ var fileGrep = function (stream, reg) {
 };
 var fs = require('fs');
 var STATE_KEY = "ctagsSupport";
-var navigationHistory = [];
+var navigationHistory = [];    
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -59,6 +59,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     // The commandId parameter must match the command field in package.json
     let disposableFindTags = vscode.commands.registerCommand('extension.searchCTags', () => {
+        console.log(vscode.workspace.workspaceFolders);
         console.log("Read .tag file from:" + path.join(vscode.workspace.rootPath, '.tags'));
         let tags = loadTags(path.join(vscode.workspace.rootPath, '.tags'));
         searchTags(context, tags);
