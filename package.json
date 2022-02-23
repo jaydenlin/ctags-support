@@ -2,7 +2,7 @@
   "name": "ctags-support",
   "displayName": "CTags Support",
   "description": "CTags support with navigation to definition and navigation history recored",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "publisher": "jaydenlin",
   "icon": "images/icon.png",
   "engines": {
