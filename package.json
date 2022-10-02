@@ -3,7 +3,7 @@
   "displayName": "CTags Support",
   "description": "CTags support with navigation to definition and navigation history recored",
   "version": "1.0.21",
-  "publisher": "jaydenlin",
+  "publisher": "practically-illiterate",
   "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.34.0"
@@ -37,6 +37,17 @@
         "title": "Ctags Support: clear one navigation history"
       }
     ],
+    "configuration": {
+      "title": "Ctags Support",
+      "properties": {
+        "ctagsSupport.ctagsFilename": {
+          "scope": "language-overridable",
+          "type": "string",
+          "default": ".tags",
+          "description": "Tags filename"
+        }
+      }
+    },
     "keybindings": [
       {
         "command": "extension.searchCTags",
@@ -75,7 +86,7 @@
     "@typescript-eslint/eslint-plugin": "^4.16.0",
     "@typescript-eslint/parser": "^4.16.0",
     "eslint": "^7.21.0",
-    "typescript": "^4.5.5"
+    "typescript": "^4.8.4"
   },
   "dependencies": {
     "n-readlines": "^0.2.7",
