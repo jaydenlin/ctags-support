@@ -3,7 +3,7 @@
   "displayName": "CTags Support",
   "description": "CTags support with navigation to definition and navigation history recored",
   "version": "1.0.21",
-  "publisher": "practically-illiterate",
+  "publisher": "jaydenlin",
   "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.34.0"
