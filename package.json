@@ -12,7 +12,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.searchCTags",
+    "onCommand:extension.searchTags",
     "onCommand:extension.showNavigationHistory",
     "onCommand:extension.clearAllNavigationHistory",
     "onCommand:extension.clearOneNavigationHistory"
@@ -21,7 +21,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "extension.searchCTags",
+        "command": "extension.searchTags",
         "title": "Ctags Support: navigate to definition"
       },
       {
@@ -50,7 +50,7 @@
     },
     "keybindings": [
       {
-        "command": "extension.searchCTags",
+        "command": "extension.searchTags",
         "key": "ctrl+t",
         "mac": "cmd+t",
         "when": "editorTextFocus"
