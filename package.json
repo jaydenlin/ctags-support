@@ -77,7 +77,8 @@
     "lint": "eslint . --ext .ts,.tsx",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile",
-    "test": "node ./out/test/runTest.js"
+    "test": "node ./out/test/runTest.js",
+    "pack": "npx -y @vscode/vsce package"
   },
   "devDependencies": {
     "@types/mocha": "^9.1.0",
