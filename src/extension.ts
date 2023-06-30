@@ -58,7 +58,7 @@ export function activate(context: vscode.ExtensionContext) {
     console.log('Congratulations, your extension "ctags-support" is now active!');
 
     // The commandId parameter must match the command field in package.json
-    let disposableFindTags = vscode.commands.registerCommand('extension.searchCTags', () => {
+    let disposableFindTags = vscode.commands.registerCommand('extension.searchTags', () => {
         console.log(vscode.workspace.workspaceFolders);
         console.log("Read .tag file from:" + path.join(vscode.workspace.rootPath, vscode.workspace.getConfiguration('ctagsSupport').ctagsFilename));
         let tags = loadTags(path.join(vscode.workspace.rootPath, vscode.workspace.getConfiguration('ctagsSupport').ctagsFilename));

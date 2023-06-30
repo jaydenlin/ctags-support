@@ -36,7 +36,7 @@ For example:
 ```
 [
     { "key": "cmd+t",//set to your favorite shortcut
-      "command": "extension.searchCTags",
+      "command": "extension.searchTags",
       "when": "editorTextFocus" }
 ]
 ```

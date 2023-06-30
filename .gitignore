@@ -1,2 +1,7 @@
 out
 node_modules
+package-lock.json
+tags
+TAGS
+.tags
+*.vsix
